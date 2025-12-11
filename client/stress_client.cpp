@@ -235,17 +235,6 @@ public:
     }
 };
 
-void printUsage(const char *prog_name)
-{
-    std::cout << "Usage: " << prog_name << " [options]" << std::endl;
-    std::cout << "Options:" << std::endl;
-    std::cout << "  -h <host>       Server IP address (default: 127.0.0.1)" << std::endl;
-    std::cout << "  -p <port>       Server port (default: 8888)" << std::endl;
-    std::cout << "  -s <size>       Message size in bytes (default: 1024)" << std::endl;
-    std::cout << "  -n <count>      Number of messages to send (default: 10000)" << std::endl;
-    std::cout << "  -?              Show this help message" << std::endl;
-}
-
 int main(int argc, char *argv[])
 {
     std::string server_ip = "127.0.0.1";
@@ -272,15 +261,9 @@ int main(int argc, char *argv[])
         {
             message_count = atoi(argv[++i]);
         }
-        else if (strcmp(argv[i], "-?") == 0)
-        {
-            printUsage(argv[0]);
-            return 0;
-        }
         else
         {
             std::cerr << "Unknown option: " << argv[i] << std::endl;
-            printUsage(argv[0]);
             return 1;
         }
     }
